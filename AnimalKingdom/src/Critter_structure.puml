@@ -1,0 +1,387 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Critter",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1597499417 { 
+   	label=Critter
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Critter1597499417[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Critter</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMove(info: CritterInfo): Action</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1777170886 { 
+   	label=CritterFrame
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   CritterFrame1777170886[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CritterFrame</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   countButton: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   counts: JButton[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   myModel: CritterModel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   myPicture: CritterPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   myTimer: Timer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   started: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ add(number: int, c: Class&lt;? extends Critter&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- addClassCounts()</TD></TR>
+<TR><TD ALIGN="LEFT" >- addTimer()</TD></TR>
+<TR><TD ALIGN="LEFT" >- constructSouth()</TD></TR>
+<TR><TD ALIGN="LEFT" >- doOneStep()</TD></TR>
+<TR><TD ALIGN="LEFT" >- multistep(n: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ start()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1783548802 { 
+   	label=CritterModel
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   CritterModel1783548802[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CritterModel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   critterCount: SortedMap&lt;String, Integer&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   debugView: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   grid: Critter[][] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   height: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   info: Map&lt;Critter, PrivateData&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   simulationCount: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   width: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ add(number: int, critter: Class&lt;? extends Critter&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAppearance(c: Critter): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getColor(c: Critter): Color</TD></TR>
+<TR><TD ALIGN="LEFT" >- getInfo(data: PrivateData, original: Class): Info</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPoint(c: Critter): Point</TD></TR>
+<TR><TD ALIGN="LEFT" >- getStatus(p: Point, original: Class): Neighbor</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getString(c: Critter): String</TD></TR>
+<TR><TD ALIGN="LEFT" >- inBounds(x: int, y: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- inBounds(p: Point): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ iterator(): Iterator&lt;Critter&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- makeCritter(critter: Class): Critter</TD></TR>
+<TR><TD ALIGN="LEFT" >- pointAt(p: Point, d: Direction): Point</TD></TR>
+<TR><TD ALIGN="LEFT" >- rotate(d: Direction): Direction</TD></TR>
+<TR><TD ALIGN="LEFT" >+ toggleDebug()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateColorString()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Info1783548802[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Info</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   direction: Direction [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   neighborThreats: boolean[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   neighbors: Neighbor[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ backThreat(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ frontThreat(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ leftThreat(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ rightThreat(): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1785911901 { 
+   	label=CritterPanel
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   CritterPanel1785911901[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CritterPanel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   myFont: Font [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   myModel: CritterModel [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ paintComponent(g: Graphics)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2053422538 { 
+   	label=WhiteTiger
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   WhiteTiger2053422538[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)WhiteTiger</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   hasInfected: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMove(info: CritterInfo): Action</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2066388 { 
+   	label=Bear
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Bear2066388[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Bear</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   polar: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rep: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMove(info: CritterInfo): Action</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2195582 { 
+   	label=Food
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Food2195582[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Food</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMove(info: CritterInfo): Action</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_448915724 { 
+   	label=NinjaCat
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   NinjaCat448915724[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)NinjaCat</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   rand: Random [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMove(info: CritterInfo): Action</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_68794789 { 
+   	label=Giant
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Giant68794789[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Giant</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   moves: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMove(info: CritterInfo): Action</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_80806047 { 
+   	label=Tiger
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Tiger80806047[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Tiger</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   currentColor: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   moves: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rand: Random [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMove(info: CritterInfo): Action</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_907057696 { 
+   	label=FlyTrap
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   FlyTrap907057696[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FlyTrap</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getMove(info: CritterInfo): Action</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Critter1597499417 -> Bear2066388[arrowhead=none, arrowtail=empty, dir=both];
+Critter1597499417 -> FlyTrap907057696[arrowhead=none, arrowtail=empty, dir=both];
+Critter1597499417 -> Food2195582[arrowhead=none, arrowtail=empty, dir=both];
+Critter1597499417 -> Giant68794789[arrowhead=none, arrowtail=empty, dir=both];
+Critter1597499417 -> NinjaCat448915724[arrowhead=none, arrowtail=empty, dir=both];
+Critter1597499417 -> Tiger80806047[arrowhead=none, arrowtail=empty, dir=both];
+Critter1597499417 -> WhiteTiger2053422538[arrowhead=none, arrowtail=empty, dir=both];
+CritterFrame1777170886 -> CritterModel1783548802[label="myModel
+[0..1]"];
+CritterFrame1777170886 -> CritterPanel1785911901[label="myPicture
+[0..1]"];
+CritterModel1783548802 -> Critter1597499417[label="grid
+[0..*]"];
+CritterModel1783548802 -> Critter1597499417[label="info
+[0..*]"];
+CritterPanel1785911901 -> CritterModel1783548802[label="myModel
+[0..1]"];
+Giant68794789 -> Info1783548802[arrowhead=none];
+    
+}
+@enduml
